@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://hero-v-1.0.0/KinematicBody2D.gd" type="Script" id=2]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ null, null, null, null ],
+"loop": true,
+"name": "jump",
+"speed": 12.0
+}, {
+"frames": [ null ],
+"loop": true,
+"name": "ideal",
+"speed": 0.0
+}, {
+"frames": [ null, null, null, null, null, null ],
+"loop": true,
+"name": "run-L",
+"speed": 12.0
+}, {
+"frames": [ null, null, null, null, null, null ],
+"loop": true,
+"name": "run",
+"speed": 12.0
+}, {
+"frames": [ null, null ],
+"loop": true,
+"name": "fall",
+"speed": 6.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 9.39233
+height = 15.3299
+
+[node name="hero" type="KinematicBody2D"]
+position = Vector2( 514.059, 248.132 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.416094, 1.38695 )
+scale = Vector2( 1.10541, 1.17993 )
+frames = SubResource( 1 )
+animation = "run-L"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.19, 4.548 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+smoothing_speed = 3.0

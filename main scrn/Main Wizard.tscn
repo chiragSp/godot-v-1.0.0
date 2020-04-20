@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://animation/main character animation.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://scripts/Main Wizard.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 19.6157, 53.1055 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "melee attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Position2D/melee_A/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, true ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 41.4082, 159.076 )
+
+[node name="MAIN character" type="KinematicBody2D"]
+position = Vector2( 857.449, 469.68 )
+collision_layer = 2
+collision_mask = 5
+script = ExtResource( 2 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 10.5264, -10.5264 )
+scale = Vector2( 0.2, 0.209357 )
+frames = ExtResource( 1 )
+animation = "melee"
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 9.74146, -1.118 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="sword" type="Position2D" parent="."]
+position = Vector2( 64.5935, 15.5722 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/melee attack" = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 64.7371, -1.05261 )
+
+[node name="melee_A" type="Area2D" parent="Position2D"]
+position = Vector2( 13.5849, 9.57111 )
+scale = Vector2( 0.2, 0.209357 )
+collision_layer = 8
+collision_mask = 5
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/melee_A"]
+shape = SubResource( 3 )
+disabled = true
+[connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
+[connection signal="body_entered" from="Position2D/melee_A" to="." method="_on_Area2D_body_entered"]

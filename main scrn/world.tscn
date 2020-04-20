@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://exported tilesets (tres)/swamp.tres" type="TileSet" id=1]
+[ext_resource path="res://exported tilesets (tres)/swamp objects.tres" type="TileSet" id=2]
+[ext_resource path="res://hero-v-1.0.0/KinematicBody2D.tscn" type="PackedScene" id=3]
+[ext_resource path="res://tileset/Swamp tileset/2 Background/Layers/2.png" type="Texture" id=4]
+[ext_resource path="res://hero-v-1.0.0/enemy.tscn" type="PackedScene" id=5]
+
+[node name="world" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+compatibility_mode = true
+centered_textures = true
+collision_mask = 14
+format = 1
+tile_data = PoolIntArray( 0, 2, 0, 65536, 12, 0, 131072, 12, 0, 196608, 12, 0, 262144, 12, 0, 327680, 12, 0, 393216, 12, 0, 458752, 12, 0, 524288, 12, 0, 589824, 12, 0, 655360, 12, 0, 655379, 7, 0, 720896, 12, 0, 720916, 7, 0, 720917, 8, 0, 786432, 12, 0, 786453, 7, 0, 786454, 7, 0, 786455, 7, 0, 851968, 12, 0, 851994, 7, 0, 851995, 7, 0, 851996, 7, 0, 851997, 7, 0, 917504, 12, 0, 983040, 12, 0, 983070, 6, 0, 983071, 7, 0, 983072, 8, 0, 1048576, 12, 0, 1048602, 6, 0, 1048603, 7, 0, 1048604, 8, 0, 1114112, 12, 0, 1114130, 30, 0, 1114132, 31, 0, 1114133, 32, 0, 1114134, 32, 0, 1114135, 32, 0, 1114136, 33, 0, 1179648, 12, 0, 1179654, 31, 0, 1179655, 32, 0, 1179656, 32, 0, 1179657, 33, 0, 1179665, 30, 0, 1179673, 7, 0, 1245184, 12, 0, 1245188, 0, 0, 1245189, 2, 0, 1245200, 30, 0, 1245210, 7, 0, 1310720, 12, 0, 1310724, 10, 0, 1310725, 12, 0, 1310735, 30, 0, 1310747, 7, 0, 1376256, 23, 0, 1376257, 1, 0, 1376258, 1, 0, 1376259, 1, 0, 1376260, 57, 0, 1376261, 58, 0, 1376262, 1, 0, 1376263, 1, 0, 1376264, 1, 0, 1376265, 1, 0, 1376266, 1, 0, 1376267, 47, 0, 1376270, 30, 0, 1376284, 7, 0, 1441792, 49, 0, 1441793, 49, 0, 1441794, 49, 0, 1441795, 49, 0, 1441796, 49, 0, 1441797, 49, 0, 1441798, 49, 0, 1441799, 49, 0, 1441800, 49, 0, 1441801, 49, 0, 1441802, 49, 0, 1441803, 49, 0, 1441804, 49, 0, 1441805, 49, 0, 1441806, 49, 0, 1441807, 49, 0, 1441808, 49, 0, 1441809, 49, 0, 1441810, 49, 0, 1441811, 49, 0, 1441812, 49, 0, 1441813, 49, 0, 1441814, 49, 0, 1441815, 49, 0, 1441816, 49, 0, 1441817, 49, 0, 1441818, 49, 0, 1441819, 49, 0, 1441820, 49, 0, 1441821, 49, 0, 1441822, 49, 0, 1441823, 49, 0, 1441824, 49, 0, 1441825, 49, 0, 1441826, 49, 0, 1441827, 49, 0, 1441828, 49, 0, 1441829, 49, 0, 1441830, 49, 0, 1441831, 49, 0 )
+
+[node name="objects" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_tile_origin = 2
+compatibility_mode = true
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( 327690, 34, 0, 524291, 47, 0 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2( 10, 10 )
+scroll_base_offset = Vector2( 5, 5 )
+scroll_base_scale = Vector2( 3, 3 )
+scroll_limit_begin = Vector2( 6, 6 )
+scroll_limit_end = Vector2( 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 648, 366 )
+scale = Vector2( 2.22347, 2.23253 )
+texture = ExtResource( 4 )
+
+[node name="hero" parent="." instance=ExtResource( 3 )]
+position = Vector2( 203, 139 )
+
+[node name="enemy2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 338, 651 )
